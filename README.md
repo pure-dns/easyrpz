@@ -9,7 +9,7 @@ This program converts a hosts file to an RPZ (Response Policy Zone) file. It rea
 ## Usage
 
 ```
-./hosts2rpz.go \
+easyrpz \
   -i inputFile1.hosts \
   -i http://example.com/inputFile2.hosts \
   -e excludeFile1.txt \

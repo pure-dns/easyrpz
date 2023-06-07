@@ -1,3 +1,3 @@
 #!/bin/bash
-go build hosts2rpz.go
-mv hosts2rpz ../bin
+go build main.go
+mv main bin/easyrpz
