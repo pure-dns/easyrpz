@@ -1,4 +1,4 @@
-# Hosts to RPZ Converter
+# EasyRPZ - Hosts to RPZ converter
 
 This program converts a hosts file to an RPZ (Response Policy Zone) file. It reads the input hosts file(s), processes each line, and generates an RPZ file with A records based on the hosts file entries.
 
@@ -6,10 +6,14 @@ This program converts a hosts file to an RPZ (Response Policy Zone) file. It rea
 
 - Go (version 1.16 or above) must be installed.
 
+## Building
+
+To build the program into binary file, simply run `./make`.
+
 ## Usage
 
 ```
-easyrpz \
+./bin/easyrpz \
   -i inputFile1.hosts \
   -i http://example.com/inputFile2.hosts \
   -e excludeFile1.txt \
