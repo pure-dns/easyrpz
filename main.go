@@ -200,7 +200,7 @@ func generateRPZHeader() string {
 
 	header := fmt.Sprintf("$TTL 60\n"+
 		"@    IN    SOA        localhost.  filters.puredns.org.  (\n"+
-		"           %s      ;     serial\n"+
+		"           %s   ;     serial\n"+
 		"           2w         ;     refresh\n"+
 		"           2w         ;     retry\n"+
 		"           2w         ;     expiry\n"+
