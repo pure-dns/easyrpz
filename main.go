@@ -64,6 +64,8 @@ func main() {
 
 	// Create a set to store excluded domains
 	excludedDomains := make(map[string]bool)
+	// Create a set to store unique hosts
+	uniqueHosts := make(map[string]bool)
 
 	// Process each exclude file or URL
 	for _, excludeFile := range excludeFiles {
@@ -163,8 +165,16 @@ func main() {
 				continue
 			}
 
+			// Check if the host is already encountered
+			if uniqueHosts[host] {
+				continue
+			}
+
+			// Add host to the unique hosts set
+			uniqueHosts[host] = true
+
 			// Write the RPZ record with A record
-			_, err = fmt.Fprintf(outputFile, "%s IN A %s\n", host, ip)
+			 _, err = fmt.Fprintf(outputFile, "%s IN A %s\n", host, ip)
 			if err != nil {
 				fmt.Println("Error writing to the output file:", err)
 				return
@@ -210,4 +220,3 @@ func generateRPZHeader() string {
 
 	return header
 }
-

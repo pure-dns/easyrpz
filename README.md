@@ -1,14 +1,17 @@
 # EasyRPZ - Hosts to RPZ converter
 
-This program converts a hosts file to an RPZ (Response Policy Zone) file. It reads the input hosts file(s), processes each line, and generates an RPZ file with A records based on the hosts file entries.
+EasyRPZ is a command-line tool written in Go for converting a list of domain names and IP addresses into a Response Policy Zone (RPZ) file format. It allows you to create an RPZ file that can be used for DNS filtering and blocking specific domains.
+
+## Features
+
+- Converts a list of domain names and IP addresses into RPZ format.
+- Excludes specific domains using exclude files.
+- Handles duplicate hosts by stripping duplicates.
+- Generates RPZ file header with the current date.
 
 ## Prerequisites
 
-- Go (version 1.16 or above) must be installed.
-
-## Building
-
-To build the program into binary file, simply run `./make`.
+- Go (version 1.16 or above).
 
 ## Usage
 
@@ -25,9 +28,19 @@ This command will convert the input hosts files `inputFile1.hosts` and `inputFil
 
 ### Flags
 
-- `-i` or `--input`: Input file path(s) or URL(s) of the hosts files to convert. Multiple inputs can be provided by using multiple `-i` flags.
-- `-o` or `--output`: Output file path of the generated RPZ file.
-- `-e` or `--exclude`: File path(s) or URL(s) containing domains to exclude from the conversion. Multiple exclude files can be provided by using multiple `-e` flags.
+- `-i`: Input file paths or URLs (required, can be specified multiple times)
+- `-o`: Output file path (required)
+- `-e`: File paths or URLs containing domains to exclude (optional, can be specified multiple times)
+
+## Building
+
+Run the following command to build the program
+
+```
+./make
+```
+
+After the build is successful, you will have an executable file named `easyrpz` in the **bin** directory.
 
 ## RPZ Header
 
