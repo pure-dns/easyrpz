@@ -1,4 +1,2 @@
 #!/bin/bash
-go build main.go
-chmod +x main
-mv main bin/easyrpz
+go build -o bin/easyrpz main.go
