@@ -30,6 +30,7 @@ func main() {
 	var inputFiles StringSliceFlag
 	var excludeFiles StringSliceFlag
 	outputFlag := flag.String("o", "", "Output file path")
+	wildcardFlag := flag.Bool("w", false, "Include wildcard blocking")
 	flag.Var(&inputFiles, "i", "Input file paths or URLs")
 	flag.Var(&excludeFiles, "e", "File paths or URLs containing domains to exclude")
 	flag.Parse()
@@ -174,14 +175,14 @@ func main() {
 			uniqueHosts[host] = true
 
 			// Write the RPZ record with A record
-			 _, err = fmt.Fprintf(outputFile, "%s IN A %s\n", host, ip)
+			_, err = fmt.Fprintf(outputFile, "%s IN A %s\n", host, ip)
 			if err != nil {
 				fmt.Println("Error writing to the output file:", err)
 				return
 			}
 
 			// Check if IP is "0.0.0.0" and include wildcard record
-			if ip == "0.0.0.0" {
+			if *wildcardFlag && ip == "0.0.0.0" {
 				wildcardHost := "*." + host
 				_, err = fmt.Fprintf(outputFile, "%s IN A %s\n", wildcardHost, ip)
 				if err != nil {
